@@ -2,6 +2,8 @@ from pykeyboard import PyKeyboard
 from platform import system
 if system() == "Windows":
 	import win32com.client
+	shell = win32com.client.Dispatch("WScript.Shell")
+
 
 k = PyKeyboard()
 
@@ -15,7 +17,7 @@ if system() == "Linux":
 		[(k.press_key,k.control_key),(k.tap_key,k.down_key),(k.release_key,k.control_key)],
 		[(k.press_key,k.shift_key),(k.tap_key,k.right_key),(k.release_key,k.shift_key)],
 		[(k.press_key,k.shift_key),(k.tap_key,k.left_key),(k.release_key,k.shift_key)]]
-elif system == "Windows":
+elif system() == "Windows":
 	vlc = [[(k.tap_key,k.space)],
 		[(k.press_key,k.control_key),(k.tap_key,k.up_key),(k.release_key,k.control_key)],
 		[(k.press_key,k.control_key),(k.tap_key,k.down_key),(k.release_key,k.control_key)],

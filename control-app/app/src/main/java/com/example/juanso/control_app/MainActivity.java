@@ -35,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.forward) Button forwardButton;
     @Bind(R.id.rewind) Button rewindButton;
     @Bind(R.id.platform) Button platformButton;
+    @Bind(R.id.refresh) Button refreshButton;
     @Bind(R.id.platformTitle) TextView platformTitleTextView;
 
     int LONG_SLEEP = 500;
     int SHORT_SLEEP= 100;
-    int port = 5000;
+    int port = 9000;
 
     Flag playPressed = new Flag(false);
     Flag volUpPressed = new Flag(false);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new ScanTask(this).getReachableHost(port);
+        searchHosts();
         ButterKnife.bind(this);
         platformTitleTextView.setText(platform);
 
@@ -69,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setPlataform();
+            }
+        });
+
+        refreshButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                searchHosts();
             }
         });
     }
@@ -94,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         ConnectionManager.getInstance(this).add(request);
+    }
+    private void searchHosts(){
+        new ScanTask(this).getReachableHost(port);
     }
     public void updateUrl(ArrayList<String> hosts){
         if(hosts.size() == 0){
