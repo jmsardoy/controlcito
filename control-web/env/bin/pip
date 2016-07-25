@@ -1,4 +1,4 @@
-#!/home/juanso/projects/control-web/env/bin/python2
+#!/home/juanso/projects/control/control-web/env/bin/python2
 
 # -*- coding: utf-8 -*-
 import re

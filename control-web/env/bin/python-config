@@ -1,4 +1,4 @@
-#!/home/juanso/projects/control-web/env/bin/python
+#!/home/juanso/projects/control/control-web/env/bin/python
 
 import sys
 import getopt

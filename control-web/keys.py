@@ -1,16 +1,27 @@
 from pykeyboard import PyKeyboard
+from platform import system
+if system() == "Windows":
+	import win32com.client
 
 k = PyKeyboard()
+
 
 platforms = ["VLC", "POPCORN TIME", "YOUTUBE", "NETFLIX"]
 actions = ["PLAY","VOLUP","VOLDOWN","FORWARD","REWIND"]
 
-vlc = [[(k.tap_key,k.space)],
-	[(k.press_key,k.control_key),(k.tap_key,k.up_key),(k.release_key,k.control_key)],
-	[(k.press_key,k.control_key),(k.tap_key,k.down_key),(k.release_key,k.control_key)],
-	[(k.press_key,k.shift_key),(k.tap_key,k.right_key),(k.release_key,k.shift_key)],
-	[(k.press_key,k.shift_key),(k.tap_key,k.left_key),(k.release_key,k.shift_key)]]
-
+if system() == "Linux":
+	vlc = [[(k.tap_key,k.space)],
+		[(k.press_key,k.control_key),(k.tap_key,k.up_key),(k.release_key,k.control_key)],
+		[(k.press_key,k.control_key),(k.tap_key,k.down_key),(k.release_key,k.control_key)],
+		[(k.press_key,k.shift_key),(k.tap_key,k.right_key),(k.release_key,k.shift_key)],
+		[(k.press_key,k.shift_key),(k.tap_key,k.left_key),(k.release_key,k.shift_key)]]
+elif system == "Windows":
+	vlc = [[(k.tap_key,k.space)],
+		[(k.press_key,k.control_key),(k.tap_key,k.up_key),(k.release_key,k.control_key)],
+		[(k.press_key,k.control_key),(k.tap_key,k.down_key),(k.release_key,k.control_key)],
+		[(shell.SendKeys,'+{RIGHT}')],
+		[(shell.SendKeys,'+{LEFT}')]]
+		
 popcorn_time = [[(k.tap_key,k.space)],
 	[(k.tap_key,k.up_key)],
 	[(k.tap_key,k.down_key)],
