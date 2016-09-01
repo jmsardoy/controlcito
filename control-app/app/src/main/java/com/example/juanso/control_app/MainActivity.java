@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     Flag forwardPressed = new Flag(false);
     Flag rewindPressed = new Flag(false);
 
-    String platform = "VLC";
+    String platform = "Netflix";
     String host;
 
 
